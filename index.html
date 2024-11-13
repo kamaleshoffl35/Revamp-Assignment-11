@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="2xl:container mx-auto rounded-2xl">
+        <div class=" mx-auto bg-[#E200E5] ">
+            <h1 class="text-[white] p-2  ">Update Password</h1>
+            <form id="updatePasswordForm">
+      
+                <!-- New Password Input -->
+                <div class="mb-4">
+                  <label for="newPassword" class="block mb-1 text-[white]">New Password</label>
+                  <input type="password" id="newPassword" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" placeholder="Create new password">
+                  <p id="newPasswordErrMsg" class="mt-1 text-sm text-red-500"></p>
+                </div>
+                
+                <!-- Confirm Password Input -->
+                <div class="mb-4">
+                  <label for="confirmPassword" class="block mb-1 text-[white]">Confirm Password</label>
+                  <input type="password" id="confirmPassword" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500" placeholder="Confirm password">
+                  <p id="confirmPasswordErrMsg" class="mt-1 text-sm text-red-500"></p>
+                </div>
+                
+                <!-- Submit Button -->
+                <div class="p-5"><button type="submit" id="updateBtn" class=" p-2 mt-4 text-white bg-blue-500 rounded-md hover:bg-blue-600 ">Update</button></div>
+              
+              </form>
+            </div>
+          
+            <!-- JavaScript for form validation -->
+            <script>
+              // Get elements
+              const updatePasswordForm = document.getElementById("updatePasswordForm");
+              const newPassword = document.getElementById("newPassword");
+              const confirmPassword = document.getElementById("confirmPassword");
+              const newPasswordErrMsg = document.getElementById("newPasswordErrMsg");
+              const confirmPasswordErrMsg = document.getElementById("confirmPasswordErrMsg");
+          
+              // Event listeners for focusout (blur) and form submit
+              newPassword.addEventListener("blur", validateNewPassword);
+              confirmPassword.addEventListener("blur", validateConfirmPassword);
+              updatePasswordForm.addEventListener("submit", (e) => {
+                e.preventDefault(); // Prevent form submission for validation purposes
+                validateNewPassword();
+                validateConfirmPassword();
+              });
+          
+              // Validation functions
+              function validateNewPassword() {
+                newPasswordErrMsg.textContent = newPassword.value.trim() === "" ? "New password is required." : "";
+              }
+          
+              function validateConfirmPassword() {
+                confirmPasswordErrMsg.textContent = confirmPassword.value.trim() === "" ? "Confirm password is required." : "";
+              }
+</body>
+
+</html>
